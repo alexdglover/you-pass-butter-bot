@@ -8,7 +8,7 @@ get '/' do
 end
 
 post '/morty_quote' do
-  puts params
+  params.to_s
   #@keyword = params[:text]
 
 #  respond_message "you looked for a morty quote with keyword #{params['keyword']}"
@@ -18,5 +18,3 @@ def respond_message message
   content_type :json
   { :text => message }.to_json
 end
-
-
