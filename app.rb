@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'json'
 
+set :protection, :except => [:json_csrf]
+
 get '/' do
   respond_message "hello world"
 end
