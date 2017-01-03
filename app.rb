@@ -11,7 +11,7 @@ post '/morty_quote' do
   puts params
   #@keyword = params[:text]
 
-  respond_message "you looked for a morty quote with keyword #{params['keyword']}"
+#  respond_message "you looked for a morty quote with keyword #{params['keyword']}"
 end
 
 def respond_message message
