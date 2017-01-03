@@ -8,7 +8,13 @@ get '/' do
 end
 
 post '/morty_quote' do
-  respond_message params['text']
+  {
+    :response_type => "in_channel",
+    :text => params['text'],
+    "attachments": [
+      :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
+    ]
+  }.to_json
 end
 
 def respond_message message
