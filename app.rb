@@ -12,7 +12,7 @@ post '/morty_quote' do
     :response_type => "in_channel",
     :text => params['text'],
     "attachments": [
-      :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
+      { :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg" }
     ]
   }.to_json
 end
