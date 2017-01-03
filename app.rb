@@ -8,10 +8,7 @@ get '/' do
 end
 
 post '/morty_quote' do
-  params.to_s
-  #@keyword = params[:text]
-
-#  respond_message "you looked for a morty quote with keyword #{params['keyword']}"
+  respond_message params['text']
 end
 
 def respond_message message
