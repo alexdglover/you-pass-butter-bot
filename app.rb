@@ -84,7 +84,7 @@ post '/memes' do
 
   if COMMAND_MEME_MAPPING.key?(text_params[0])
     # string_as_json_response "Generating..."
-    halt 200
+    status 200
     generator_id = COMMAND_MEME_MAPPING[text_params[0]][:generatorID]
     text0 = URI.encode(text_params[1])
     text1 = URI.encode(text_params[2])
