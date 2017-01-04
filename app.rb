@@ -41,7 +41,7 @@ post '/nobody-exists-on-purpose' do
 end
 
 
-post '/riggety-riggety-wrecked' do
+post '/riggety-riggety-wrecked-son' do
   image_response "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
 end
 
