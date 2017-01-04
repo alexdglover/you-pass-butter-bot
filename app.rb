@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'json'
-
+require 'HTTParty'
 
 
 set :protection, :except => [:json_csrf]
