@@ -109,7 +109,6 @@ end
 
 def post_image_to_response_url response_url, image_url
   message = {
-    :response_type => "in_channel",
     :attachments => [
       {
         :image_url => image_url,
