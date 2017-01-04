@@ -1,16 +1,8 @@
 require 'sinatra'
 require 'json'
-require 'httparty'
 
 
 set :protection, :except => [:json_csrf]
-
-class SlackOAuthHttpClient
-  include HTTParty
-  base_uri 'https://slack.com/api/oauth.access'
-end
-
-
 
 get '/' do
   string_as_json_response "hello world"
