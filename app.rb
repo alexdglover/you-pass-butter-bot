@@ -45,6 +45,10 @@ post '/where-are-my-testicles-summer' do
   image_response "http://i.imgur.com/xOcpvUM.png"
 end
 
+post '/you-pass-butter' do
+  image_response "http://i.imgur.com/qgdGda1.png"
+end
+
 # Utility functions
 
 def image_response url
