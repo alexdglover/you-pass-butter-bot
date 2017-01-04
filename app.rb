@@ -34,7 +34,8 @@ end
 
 
 post '/wriggety-wriggety-wrecked-son' do
-  image_response "http://images.8tracks.com/cover/i/002/072/259/Wrecked-1913.jpg"
+  # image_response "http://images.8tracks.com/cover/i/002/072/259/Wrecked-1913.jpg"
+  image_response "http://www.reactiongifs.us/wp-content/uploads/2016/02/riggity_wrecked_son_rick_morty.gif"
 end
 
 post '/planning-for-failure' do
@@ -46,7 +47,97 @@ post '/where-are-my-testicles-summer' do
 end
 
 post '/you-pass-butter' do
-  image_response "http://i.imgur.com/qgdGda1.png"
+  # image_response "http://i.imgur.com/qgdGda1.png"
+  image_response "https://media.giphy.com/media/Fsn4WJcqwlbtS/giphy.gif"
+end
+
+post '/the-answer-is-dont-think-about-it' do
+  image_response "http://i.imgur.com/L88mBul.jpg"
+end
+
+post '/its-getting-weird' do
+  image_response "https://i.imgur.com/bBLnvGu.jpg"
+end
+
+post '/i-just-wanna-die' do
+  image_response "http://i.imgur.com/CkmvRq8.jpg"
+end
+
+post '/wubalubadubdub' do
+  image_response "http://i.imgur.com/fub72FV.png"
+end
+
+post '/im-mr-meseeks-look-at-me' do
+  image_response "https://ih1.redbubble.net/image.23643868.0357/sticker,375x360.png"
+end
+
+post '/peace-among-worlds' do
+  image_response "https://ih0.redbubble.net/image.92099583.8371/pp,550x550.u1.jpg"
+end
+
+post '/theyre-bureaucrats-morty' do
+  image_response "https://s-media-cache-ak0.pinimg.com/600x315/eb/f5/f1/ebf5f1171db822953076ef15355b17f5.jpg"
+end
+
+post '/my-man' do
+  # image_response "https://res.cloudinary.com/teepublic/image/private/s--zVLVA5Bg--/t_Preview/b_rgb:c8e0ec,c_limit,f_jpg,h_630,q_90,w_630/v1446237990/production/designs/267402_1.jpg"
+  image_response "https://media.giphy.com/media/qPVzemjFi150Q/giphy.gif"
+end
+
+post '/snap-yes' do
+  image_response "http://i.imgur.com/gd9zPgB.gif"
+end
+
+post '/ants-in-my-eyes' do
+  image_response "http://cdn.smosh.com/sites/default/files/2016/02/rick-morty-ants.jpg"
+end
+
+post '/ooh-yeah-can-do' do
+  image_response "https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif"
+end
+
+post '/lick-lick-lick-my-balls' do
+  image_response "https://s-media-cache-ak0.pinimg.com/736x/35/6a/09/356a09cdbd08a2da289e7e1fdd2ae995.jpg"
+end
+
+post '/time-to-get-schwifty' do
+  image_response "https://media.giphy.com/media/bcWtZEuGZhDZm/giphy.gif"
+end
+
+post '/dont-hate-the-player' do
+  image_response "https://media.giphy.com/media/x9DVHBmO750Ji/giphy.gif"
+end
+
+post '/im-tiny-rick' do
+  image_response "https://media.giphy.com/media/2s0ouek7HJmWQ/giphy.gif"
+end
+
+post '/i-asked-you-to-do-one-thing' do
+  image_response "https://media.giphy.com/media/vV5g3lCOzqAhO/giphy.gif"
+end
+
+post '/hardest-working-liver' do
+  image_response "https://media.giphy.com/media/xTiTnkjij69A2S06WY/giphy.gif"
+end
+
+post '/dont-even-trip-dawg' do
+  image_response "https://media.giphy.com/media/ayQ99hp01HFN6/giphy.gif"
+end
+
+post '/being-nice' do
+  image_response "https://media.giphy.com/media/FJovzGlbuoEXm/giphy.gif"
+end
+
+post '/oh-snap' do
+  image_response "https://media.giphy.com/media/cBIooxvKerol2/giphy.gif"
+end
+
+post '/traditions-are-an-idiot-thing' do
+  image_response "https://media.giphy.com/media/SaQMf4zYa94GI/giphy.gif"
+end
+
+post '/not-today' do
+  image_response "http://i.imgur.com/kxHrcC5.gif"
 end
 
 # Utility functions
