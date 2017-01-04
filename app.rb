@@ -29,14 +29,6 @@ end
 ################################################
 
 post '/nobody-exists-on-purpose' do
-  # message = {
-  #   :response_type => "in_channel",
-  #   # :text => params['text'],
-  #   :attachments => [
-  #     { :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg" }
-  #   ]
-  # }
-  # hash_as_json_response message
   image_response "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
 end
 
@@ -45,6 +37,9 @@ post '/wriggety-wriggety-wrecked-son' do
   image_response "http://images.8tracks.com/cover/i/002/072/259/Wrecked-1913.jpg"
 end
 
+post '/planning-for-failure' do
+  image_response "http://i.gifntext.com/17459-even-dumber-than-regular-planning-that-s.gif"
+end
 
 # Utility functions
 
