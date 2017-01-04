@@ -34,7 +34,6 @@ end
 
 
 post '/wriggety-wriggety-wrecked-son' do
-  # image_response "http://images.8tracks.com/cover/i/002/072/259/Wrecked-1913.jpg"
   image_response "http://www.reactiongifs.us/wp-content/uploads/2016/02/riggity_wrecked_son_rick_morty.gif"
 end
 
@@ -47,7 +46,6 @@ post '/where-are-my-testicles-summer' do
 end
 
 post '/you-pass-butter' do
-  # image_response "http://i.imgur.com/qgdGda1.png"
   image_response "https://media.giphy.com/media/Fsn4WJcqwlbtS/giphy.gif"
 end
 
@@ -80,7 +78,6 @@ post '/theyre-bureaucrats-morty' do
 end
 
 post '/my-man' do
-  # image_response "https://res.cloudinary.com/teepublic/image/private/s--zVLVA5Bg--/t_Preview/b_rgb:c8e0ec,c_limit,f_jpg,h_630,q_90,w_630/v1446237990/production/designs/267402_1.jpg"
   image_response "https://media.giphy.com/media/qPVzemjFi150Q/giphy.gif"
 end
 
@@ -126,14 +123,6 @@ end
 
 post '/being-nice' do
   image_response "https://media.giphy.com/media/FJovzGlbuoEXm/giphy.gif"
-end
-
-post '/oh-snap' do
-  image_response "https://media.giphy.com/media/cBIooxvKerol2/giphy.gif"
-end
-
-post '/traditions-are-an-idiot-thing' do
-  image_response "https://media.giphy.com/media/SaQMf4zYa94GI/giphy.gif"
 end
 
 post '/not-today' do
