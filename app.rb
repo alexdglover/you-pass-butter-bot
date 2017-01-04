@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'json'
 require 'httparty'
+require 'uri'
 
 set :protection, :except => [:json_csrf]
 
@@ -56,6 +57,14 @@ COMMAND_IMAGE_MAPPING = {
   "not-today" => "http://i.imgur.com/kxHrcC5.gif"
 }
 
+COMMAND_MEME_MAPPING = {
+  "tiny-rick" => {
+    "generatorID": 5200542,
+    "imageID": 13939355,
+    "displayName": "Tiny Rick"
+  }
+}
+
 post '/images' do
   if COMMAND_IMAGE_MAPPING.key?(params['text'])
     image_response COMMAND_IMAGE_MAPPING[params['text']]
@@ -69,7 +78,46 @@ post '/images/all' do
   string_as_json_response "Full list of images:\n  #{images}"
 end
 
+post '/memes' do
+  text_params = params['text'].split(' ')
+  response_url = params['response_url']
+
+  if COMMAND_MEME_MAPPING.key?(text_params[0])
+    generator_id = COMMAND_MEME_MAPPING[text_params[0]][:generatorID]
+    text0 = URI.encode(text_params[1])
+    text1 = URI.encode(text_params[2])
+    # generate memes
+    response = HTTParty.get("http://version1.api.memegenerator.net/" +
+      "Instance_Create?username=test&password=test&languageCode=en&" +
+      "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
+    puts response
+    if response['success']
+      post_image_to_response_url response_url, response['result']['instanceImageUrl']
+    else
+      puts response['result']
+      # string_as_json_response "Error generating meme"
+    end
+  else
+    string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
+  end
+
+end
+
 # Utility functions
+
+def post_image_to_response_url response_url, image_url
+  message = {
+    :response_type => "in_channel",
+    :attachments => [
+      { :image_url => image_url }
+    ]
+  }
+  HTTParty.post(response_url, {
+    :body => message.to_json,
+    :headers => { 'Content-Type' => 'application/json'}
+  })
+
+end
 
 def image_response url
   message = {
