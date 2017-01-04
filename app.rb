@@ -29,7 +29,8 @@ end
 
 get '/oauth' do
   response = HTTParty.post("https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}")
-  if response.body['ok'] == true
+  responseBody = JSON.parse(response.body)
+  if responseBody['ok'] == true
     "<h1>You've just installed the ButtuerPassingRobot! Let's get riggety wrecked!!!</h1>"
   else
     response.body
