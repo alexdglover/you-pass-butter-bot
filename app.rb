@@ -83,22 +83,25 @@ post '/memes' do
   response_url = params['response_url']
 
   if COMMAND_MEME_MAPPING.key?(text_params[0])
+    string_as_json_response "Generating..."
     generator_id = COMMAND_MEME_MAPPING[text_params[0]][:generatorID]
     text0 = URI.encode(text_params[1])
     text1 = URI.encode(text_params[2])
     # generate memes
-    response = HTTParty.get("http://version1.api.memegenerator.net/" +
-      "Instance_Create?username=test&password=test&languageCode=en&" +
-      "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
-    puts response
-    if response['success']
-      puts "meme generated successfully"
-      puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
-      post_image_to_response_url response_url, response['result']['instanceImageUrl']
-    else
-      puts response['result']
-      # string_as_json_response "Error generating meme"
-    end
+    Thread.new{
+      response = HTTParty.get("http://version1.api.memegenerator.net/" +
+        "Instance_Create?username=test&password=test&languageCode=en&" +
+        "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
+      puts response
+      if response['success']
+        puts "meme generated successfully"
+        puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
+        post_image_to_response_url response_url, response['result']['instanceImageUrl']
+      else
+        puts response['result']
+        # string_as_json_response "Error generating meme"
+      end
+    }
   else
     string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
   end
