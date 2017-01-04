@@ -83,26 +83,22 @@ post '/memes' do
   response_url = params['response_url']
 
   if COMMAND_MEME_MAPPING.key?(text_params[0])
-    # string_as_json_response "Generating..."
-    status 200
     generator_id = COMMAND_MEME_MAPPING[text_params[0]][:generatorID]
     text0 = URI.encode(text_params[1])
     text1 = URI.encode(text_params[2])
     # generate memes
-    Thread.new{
-      response = HTTParty.get("http://version1.api.memegenerator.net/" +
-        "Instance_Create?username=test&password=test&languageCode=en&" +
-        "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
-      puts response
-      if response['success']
-        puts "meme generated successfully"
-        puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
-        post_image_to_response_url response_url, response['result']['instanceImageUrl']
-      else
-        puts response['result']
-        # string_as_json_response "Error generating meme"
-      end
-    }
+    response = HTTParty.get("http://version1.api.memegenerator.net/" +
+      "Instance_Create?username=test&password=test&languageCode=en&" +
+      "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
+    puts response
+    if response['success']
+      puts "meme generated successfully"
+      puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
+      post_image_to_response_url response_url, response['result']['instanceImageUrl']
+    else
+      puts response['result']
+      # string_as_json_response "Error generating meme"
+    end
   else
     string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
   end
@@ -115,12 +111,18 @@ def post_image_to_response_url response_url, image_url
   message = {
     :response_type => "in_channel",
     :attachments => [
-      { :image_url => image_url }
+      {
+        :image_url => image_url,
+        :fallback => "Required plain-text summary of the attachment.",
+        :text => "Optional text that appears within the attachment"
+      }
     ]
   }
+
+  message = message.to_json
   puts "about to send message back to slack"
   puts "message is as follows:"
-  puts message.to_json
+  puts message
   response = HTTParty.post(response_url, {
     :body => message.to_json,
     :headers => { 'Content-Type' => 'application/json' }
