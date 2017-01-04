@@ -92,6 +92,8 @@ post '/memes' do
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
     puts response
     if response['success']
+      puts "meme generated successfully"
+      puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
     else
       puts response['result']
@@ -112,10 +114,18 @@ def post_image_to_response_url response_url, image_url
       { :image_url => image_url }
     ]
   }
-  HTTParty.post(response_url, {
+  puts "about to send message back to slack"
+  puts "message is as follows:"
+  puts message.to_json
+  response = HTTParty.post(response_url, {
     :body => message.to_json,
-    :headers => { 'Content-Type' => 'application/json'}
+    :headers => { 'Content-Type' => 'application/json' }
   })
+
+  puts "response success:"
+  puts response['success']
+  puts "response result:"
+  puts response['result']
 
 end
 
