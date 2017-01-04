@@ -38,7 +38,11 @@ post '/wriggety-wriggety-wrecked-son' do
 end
 
 post '/planning-for-failure' do
-  image_response "http://i.gifntext.com/17459-even-dumber-than-regular-planning-that-s.gif"
+  image_response "http://2.media.dorkly.cvcdn.com/78/27/5e7374300a84037f2bdbc061f2e69211.jpg"
+end
+
+post '/where-are-my-testicles-summer' do
+  image_response "http://i.imgur.com/xOcpvUM.png"
 end
 
 # Utility functions
