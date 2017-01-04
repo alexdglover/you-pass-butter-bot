@@ -18,6 +18,10 @@ post '/nobody-exists-on-purpose' do
   hash_as_json_response message
 end
 
+get '/oauth' do
+  hash_as_json_response params
+end
+
 def hash_as_json_response message
   content_type :json
   message.to_json
