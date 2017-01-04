@@ -65,7 +65,7 @@ post '/images' do
 end
 
 post '/images/all' do
-  images = COMMAND_IMAGE_MAPPING.keys.join(",\n  ")
+  images = COMMAND_IMAGE_MAPPING.keys.sort.join(",\n  ")
   string_as_json_response "Full list of images:\n  #{images}"
 end
 
