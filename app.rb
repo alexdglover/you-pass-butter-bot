@@ -66,7 +66,8 @@ end
 
 post '/images/all' do
   images = COMMAND_IMAGE_MAPPING.keys.join(',\n  ')
-  "Full list of images:\n  #{images}"
+  string_as_json_response "Full list of images:\n  #{images}"
+
 end
 
 post '/nobody-exists-on-purpose' do
