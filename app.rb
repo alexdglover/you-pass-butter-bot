@@ -28,7 +28,7 @@ post '/nobody-exists-on-purpose' do
 end
 
 get '/oauth' do
-  # hash_as_json_response params
+  hash_as_json_response params
   # post to https://slack.com/api/oauth.access
   # client_id	  Client ID of your registered Slack application.
   # client_secret	  Client Secret of your registered Slack application.
@@ -44,8 +44,8 @@ get '/oauth' do
   # }
   #
   # pp Partay.post('/pears.xml', options)
-  response = HTTParty.post('https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8')
-  puts response.body
+  # response = HTTParty.post('https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8')
+  # puts response.body
 end
 
 def hash_as_json_response message
