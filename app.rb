@@ -29,25 +29,19 @@ end
 ################################################
 
 post '/nobody-exists-on-purpose' do
-  message = {
-    :response_type => "in_channel",
-    # :text => params['text'],
-    :attachments => [
-      { :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg" }
-    ]
-  }
-  hash_as_json_response message
-end
-
-
-post '/riggety-riggety-wrecked' do
   # message = {
   #   :response_type => "in_channel",
+  #   # :text => params['text'],
   #   :attachments => [
   #     { :image_url => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg" }
   #   ]
   # }
   # hash_as_json_response message
+  image_response "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
+end
+
+
+post '/riggety-riggety-wrecked' do
   image_response "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg"
 end
 
