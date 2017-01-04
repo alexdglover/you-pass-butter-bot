@@ -44,7 +44,7 @@ get '/oauth' do
   # }
   #
   # pp Partay.post('/pears.xml', options)
-  response = HTTParty.post('https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}')
+  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}")
   response.body
 end
 
