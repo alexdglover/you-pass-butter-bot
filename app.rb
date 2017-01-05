@@ -5,28 +5,8 @@ require 'uri'
 
 set :protection, :except => [:json_csrf]
 
-
-
 ################################################
-# Generic routes
-################################################
-
-get '/' do
-  string_as_json_response "hello world"
-end
-
-get '/oauth' do
-  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}")
-  responseBody = JSON.parse(response.body)
-  if responseBody['ok'] == true
-    "<h1>You've just installed the ButterPassingRobot! Let's get riggety wrecked!!!</h1>"
-  else
-    response.body
-  end
-end
-
-################################################
-# Image fetching routes
+# Constants and global vars
 ################################################
 
 COMMAND_IMAGE_MAPPING = {
@@ -65,6 +45,30 @@ COMMAND_MEME_MAPPING = {
   }
 }
 
+
+################################################
+# Generic routes
+################################################
+
+get '/' do
+  string_as_json_response "hello world"
+end
+
+get '/oauth' do
+  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}")
+  responseBody = JSON.parse(response.body)
+  if responseBody['ok'] == true
+    "<h1>You've just installed the ButterPassingRobot! Let's get riggety wrecked!!!</h1>"
+  else
+    response.body
+  end
+end
+
+
+################################################
+# Image related routes
+################################################
+
 post '/images' do
   if COMMAND_IMAGE_MAPPING.key?(params['text'])
     image_response COMMAND_IMAGE_MAPPING[params['text']]
@@ -78,6 +82,11 @@ post '/images/all' do
   string_as_json_response "Full list of images:\n  #{images}"
 end
 
+
+################################################
+# Meme related routes
+################################################
+
 post '/memes' do
   text_params = params['text'].split(' ')
   response_url = params['response_url']
@@ -90,14 +99,11 @@ post '/memes' do
     response = HTTParty.get("http://version1.api.memegenerator.net/" +
       "Instance_Create?username=test&password=test&languageCode=en&" +
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
-    puts response
     if response['success']
-      puts "meme generated successfully"
-      puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
+      puts "response URL is #{response_url} and image URL is #{response['result']['instanceImageUrl']}"
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
     else
-      puts response['result']
-      # string_as_json_response "Error generating meme"
+      string_as_json_response "Error generating meme"
     end
   else
     string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
@@ -105,7 +111,10 @@ post '/memes' do
 
 end
 
+
+################################################
 # Utility functions
+################################################
 
 def post_image_to_response_url response_url, image_url
   message = {
@@ -119,21 +128,10 @@ def post_image_to_response_url response_url, image_url
   }
 
   message = message.to_json
-  puts "about to send message back to slack"
-  puts "message is as follows:"
-  puts message
   response = HTTParty.post(response_url, {
     :body => message,
     :headers => { 'Content-Type' => 'application/json' }
   })
-
-  puts "response body:"
-  puts response.body
-  puts "response response:"
-  puts response.response
-  puts "response result:"
-  puts response['result']
-
 end
 
 def image_response url
