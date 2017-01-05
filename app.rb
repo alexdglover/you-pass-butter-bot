@@ -132,9 +132,7 @@ end
 ################################################
 
 post '/memes' do
-  puts params['text']
   text_params = params['text'].split('; ')
-  puts text_params
   response_url = params['response_url']
 
   if COMMAND_MEME_MAPPING.key?(text_params[0])
