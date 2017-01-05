@@ -44,8 +44,47 @@ COMMAND_IMAGE_MAPPING = {
 COMMAND_MEME_MAPPING = {
   "tiny-rick" => {
     "generatorID": 5200542,
-    "imageID": 13939355,
     "displayName": "Tiny Rick"
+  },
+  "get-schwifty" => {
+    "generatorID": 5841203,
+    "displayName": "Rick Sanchez Schwifty"
+  },
+  "rick-shrug" => {
+    "generatorID": 5733231,
+    "displayName": "Rick Sanchez123"
+  },
+  "rick-scolding-morty" => {
+    "generatorID": 6223262,
+    "displayName": "Rick Sanchezzz"
+  },
+  "way-up-your-butt" => {
+    "generatorID": 6063115,
+    "displayName": "Rick Sanchez 2"
+  },
+  "get-your-shit-together" => {
+    "generatorID": 6168409,
+    "displayName": "mortygetyourshittogether"
+  },
+  "rick-and-morty-couch" => {
+    "generatorID": 4875756,
+    "displayName": "Rick and Morty Couch"
+  },
+  "i-just-got-bored" => {
+    "generatorID": 4229669,
+    "displayName": "Rick and Morty - I'm bored"
+  },
+  "show-me-what-you-got" => {
+    "generatorID": 6873210,
+    "displayName": "Show Me What You GotT"
+  },
+  "bird-person" => {
+    "generatorID": 3687578,
+    "displayName": "Bird Person Rick and Morty"
+  },
+  "look-morty" => {
+    "generatorID": 5932800,
+    "displayName": "Grandpa Rick"
   }
 }
 
