@@ -117,7 +117,7 @@ post '/images' do
     image_response COMMAND_IMAGE_MAPPING[params['text']]
   else
     images = COMMAND_IMAGE_MAPPING.keys.sort.join(",\n  ")
-    string_as_json_response "Cannot find that image. Full list of images:\n  #{images}"
+    string_as_json_response "Cannot find that image #{params['text']}. Full list of images:\n  #{images}"
   end
 end
 
@@ -132,7 +132,7 @@ end
 ################################################
 
 post '/memes' do
-  text_params = params['text'].split(' ')
+  text_params = params['text'].split('; ')
   response_url = params['response_url']
 
   if COMMAND_MEME_MAPPING.key?(text_params[0])
@@ -152,7 +152,7 @@ post '/memes' do
     end
   else
     memes = COMMAND_MEME_MAPPING.keys.sort.join(",\n  ")
-    string_as_json_response "Cannot find that meme. Full list of available memes:\n  #{memes}"
+    string_as_json_response "Cannot find that meme #{text_params[0]}. Full list of available memes:\n  #{memes}"
   end
 
 end
