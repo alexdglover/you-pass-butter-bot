@@ -96,8 +96,7 @@ post '/memes' do
       puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
     else
-      puts response['result']
-      # string_as_json_response "Error generating meme"
+      string_as_json_response "Error generating meme"
     end
   else
     string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
@@ -119,21 +118,10 @@ def post_image_to_response_url response_url, image_url
   }
 
   message = message.to_json
-  puts "about to send message back to slack"
-  puts "message is as follows:"
-  puts message
   response = HTTParty.post(response_url, {
     :body => message,
     :headers => { 'Content-Type' => 'application/json' }
   })
-
-  puts "response body:"
-  puts response.body
-  puts "response response:"
-  puts response.response
-  puts "response result:"
-  puts response['result']
-
 end
 
 def image_response url
