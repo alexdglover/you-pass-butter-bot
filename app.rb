@@ -95,7 +95,7 @@ post '/memes' do
       puts "meme generated successfully"
       puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
-      string_as_json_response "Meme generating now..."
+      status 200
     else
       puts response['result']
       # string_as_json_response "Error generating meme"
