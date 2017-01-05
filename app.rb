@@ -10,6 +10,10 @@ set :protection, :except => [:json_csrf]
 # Constans and global vars
 ################################################
 
+MEME_GENERATOR_USERNAME=ENV["MEME_GENERATOR_USERNAME"]
+MEME_GENERATOR_PASSWORD=ENV["MEME_GENERATOR_PASSWORD"]
+
+
 COMMAND_IMAGE_MAPPING = {
   "nobody-exists-on-purpose" => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg",
   "wriggety-wriggety-wrecked-son" => "http://www.reactiongifs.us/wp-content/uploads/2016/02/riggity_wrecked_son_rick_morty.gif",
@@ -98,7 +102,8 @@ post '/memes' do
     text1 = URI.encode(text_params[2])
     # generate memes
     response = HTTParty.get("http://version1.api.memegenerator.net/" +
-      "Instance_Create?username=test&password=test&languageCode=en&" +
+      "Instance_Create?username=#{MEME_GENERATOR_USERNAME}" +
+      "&password=#{MEME_GENERATOR_PASSWORD}&languageCode=en&" +
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
     if response['success']
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
