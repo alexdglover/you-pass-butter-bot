@@ -121,8 +121,7 @@ def post_image_to_response_url response_url, image_url
     :attachments => [
       {
         :image_url => image_url,
-        :fallback => "Required plain-text summary of the attachment.",
-        :text => "Optional text that appears within the attachment"
+        :fallback => "Rick and Morty Meme"
       }
     ]
   }
