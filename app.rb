@@ -13,7 +13,6 @@ set :protection, :except => [:json_csrf]
 MEME_GENERATOR_USERNAME=ENV["MEME_GENERATOR_USERNAME"]
 MEME_GENERATOR_PASSWORD=ENV["MEME_GENERATOR_PASSWORD"]
 
-
 COMMAND_IMAGE_MAPPING = {
   "nobody-exists-on-purpose" => "http://cdn.smosh.com/sites/default/files/2015/12/rickmorty15.jpg",
   "wriggety-wriggety-wrecked-son" => "http://www.reactiongifs.us/wp-content/uploads/2016/02/riggity_wrecked_son_rick_morty.gif",
@@ -63,7 +62,7 @@ get '/oauth' do
   response = HTTParty.post("https://slack.com/api/oauth.access?client_id=122992570306.122925378483&client_secret=8be8c881f06d9a585b7c9e43be0185e8&code=#{params['code']}")
   responseBody = JSON.parse(response.body)
   if responseBody['ok'] == true
-    "<h1>You've just installed the ButterPassingRobot! Let's get riggety wrecked!!!</h1>"
+    "<h1>You've just installed the YouPassButter Slack bot! Let's get riggety wrecked!!!</h1>"
   else
     response.body
   end
@@ -115,6 +114,11 @@ post '/memes' do
     string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
   end
 
+end
+
+post '/memes/all' do
+  memes = COMMAND_MEME_MAPPING.keys.sort.join(",\n  ")
+  string_as_json_response "Full list of memes:\n  #{memes}"
 end
 
 ################################################
