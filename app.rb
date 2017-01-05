@@ -77,7 +77,8 @@ post '/images' do
   if COMMAND_IMAGE_MAPPING.key?(params['text'])
     image_response COMMAND_IMAGE_MAPPING[params['text']]
   else
-    string_as_json_response "Cannot find that image. Try /rm-list-images to see a full list of images"
+    images = COMMAND_IMAGE_MAPPING.keys.sort.join(",\n  ")
+    string_as_json_response "Cannot find that image. Full list of images:\n  #{images}"
   end
 end
 
@@ -111,7 +112,8 @@ post '/memes' do
       string_as_json_response "Error generating meme"
     end
   else
-    string_as_json_response "Cannot find that image. Try /rm-list-memes to see a full list of memes"
+    memes = COMMAND_MEME_MAPPING.keys.sort.join(",\n  ")
+    string_as_json_response "Cannot find that meme. Full list of available memes:\n  #{memes}"
   end
 
 end
