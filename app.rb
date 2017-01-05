@@ -123,12 +123,14 @@ def post_image_to_response_url response_url, image_url
   puts "message is as follows:"
   puts message
   response = HTTParty.post(response_url, {
-    :body => message.to_json,
+    :body => message,
     :headers => { 'Content-Type' => 'application/json' }
   })
 
-  puts "response success:"
-  puts response['success']
+  puts "response body:"
+  puts response.body
+  puts "response response:"
+  puts response.response
   puts "response result:"
   puts response['result']
 
