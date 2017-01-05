@@ -127,10 +127,8 @@ def post_image_to_response_url response_url, image_url
     :headers => { 'Content-Type' => 'application/json' }
   })
 
-  puts "response body:"
-  puts response.body
-  puts "response response:"
-  puts response.response
+  puts "response success:"
+  puts response['success']
   puts "response result:"
   puts response['result']
 
