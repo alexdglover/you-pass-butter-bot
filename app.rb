@@ -95,6 +95,7 @@ post '/memes' do
       puts "meme generated successfully"
       puts "response URL is #{response_url} and iamge URL is #{response['result']['instanceImageUrl']}"
       post_image_to_response_url response_url, response['result']['instanceImageUrl']
+      string_as_json_response "Meme generating now..."
     else
       puts response['result']
       # string_as_json_response "Error generating meme"
@@ -126,6 +127,7 @@ def post_image_to_response_url response_url, image_url
     :body => message,
     :headers => { 'Content-Type' => 'application/json' }
   })
+
 end
 
 def image_response url
