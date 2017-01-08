@@ -126,9 +126,6 @@ post '/images/all' do
   string_as_json_response "Full list of images:\n  #{images}"
 end
 
-post '/you-pass-butter' do
-  image_response "https://media.giphy.com/media/Fsn4WJcqwlbtS/giphy.gif"
-end
 
 ################################################
 # Meme related routes
