@@ -4,4 +4,4 @@ language: ruby
 rvm:
   - 2.2
 script:
-  - rubocop
+  - bundle exec rubocop
