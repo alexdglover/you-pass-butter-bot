@@ -40,47 +40,47 @@ COMMAND_IMAGE_MAPPING = {
 
 COMMAND_MEME_MAPPING = {
   'tiny-rick' => {
-    'generatorID': 5_200_542,
+    'generatorID': 5200542,
     'displayName': 'Tiny Rick'
   },
   'get-schwifty' => {
-    'generatorID': 5_841_203,
+    'generatorID': 5841203,
     'displayName': 'Rick Sanchez Schwifty'
   },
   'rick-shrug' => {
-    'generatorID': 5_733_231,
+    'generatorID': 5733231,
     'displayName': 'Rick Sanchez123'
   },
   'rick-scolding-morty' => {
-    'generatorID': 6_223_262,
+    'generatorID': 6223262,
     'displayName': 'Rick Sanchezzz'
   },
   'way-up-your-butt' => {
-    'generatorID': 6_063_115,
+    'generatorID': 6063115,
     'displayName': 'Rick Sanchez 2'
   },
   'get-your-shit-together' => {
-    'generatorID': 6_168_409,
+    'generatorID': 6168409,
     'displayName': 'mortygetyourshittogether'
   },
   'rick-and-morty-couch' => {
-    'generatorID': 4_875_756,
+    'generatorID': 4875756,
     'displayName': 'Rick and Morty Couch'
   },
   'i-just-got-bored' => {
-    'generatorID': 4_229_669,
+    'generatorID': 4229669,
     'displayName': 'Rick and Morty - I\'m bored'
   },
   'show-me-what-you-got' => {
-    'generatorID': 6_873_210,
+    'generatorID': 6873210,
     'displayName': 'Show Me What You GotT'
   },
   'bird-person' => {
-    'generatorID': 3_687_578,
+    'generatorID': 3687578,
     'displayName': 'Bird Person Rick and Morty'
   },
   'look-morty' => {
-    'generatorID': 5_932_800,
+    'generatorID': 5932800,
     'displayName': 'Grandpa Rick'
   }
 }.freeze
@@ -94,9 +94,10 @@ get '/' do
 end
 
 get '/oauth' do
-  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=\
-    #{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}\
-    &code=#{params['code']}")
+  response = HTTParty.post('https://slack.com/api/oauth.access?client_id=' \
+    "#{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}" \
+    "&code=#{params['code']}")
+  print(response)
   response_body = JSON.parse(response.body)
   if response_body['ok'] == true
     '<h1>You\'ve just installed the YouPassButter Slack bot! Let\'s get riggety
@@ -144,7 +145,7 @@ post '/memes' do
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
     if response['success']
       post_image_to_response_url response_url, \
-                                 response['result']['instanceImageUrl']
+                                 response['result']['instanceUrl']
       status 200
     else
       string_as_json_response 'Error generating meme'
