@@ -95,8 +95,14 @@ end
 
 get '/oauth' do
   print(ENV['SLACK_CLIENT_ID'])
+  print('\n')
   print(params)
+  print('\n')
   print(params['code'])
+  print('\n')
+  print("https://slack.com/api/oauth.access?client_id=\
+    #{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}\
+    &code=#{params['code']}\n")  
   response = HTTParty.post("https://slack.com/api/oauth.access?client_id=\
     #{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}\
     &code=#{params['code']}")
