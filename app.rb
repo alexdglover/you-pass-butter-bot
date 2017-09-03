@@ -139,11 +139,18 @@ post '/memes' do
     text0 = URI.encode(text_params[1])
     text1 = URI.encode(text_params[2])
     # generate memes
+    puts "I'm about to GET this URL:"
+    puts 'http://version1.api.memegenerator.net/' \
+      "Instance_Create?username=#{ENV['MEME_GENERATOR_USERNAME']}" \
+      "&password=#{ENV['MEME_GENERATOR_PASSWORD']}&languageCode=en&" \
+      "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}"
     response = HTTParty.get('http://version1.api.memegenerator.net/' \
       "Instance_Create?username=#{ENV['MEME_GENERATOR_USERNAME']}" \
       "&password=#{ENV['MEME_GENERATOR_PASSWORD']}&languageCode=en&" \
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
     if response['success']
+      puts "I'm about to POST to this response_url: #{response_url}"
+      puts "I'm going to send this instanceImageUrl: #{instanceImageUrl}"
       post_image_to_response_url response_url, \
                                  response['result']['instanceImageUrl']
       status 200
