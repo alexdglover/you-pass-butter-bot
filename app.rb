@@ -150,9 +150,9 @@ post '/memes' do
       "generatorID=#{generator_id}&text0=#{text0}&text1=#{text1}")
     if response['success']
       puts "I'm about to POST to this response_url: #{response_url}"
-      puts "I'm going to send this instanceImageUrl: #{response['result']['instanceImageUrl']}"
+      puts "I'm going to send this instanceUrl: #{response['result']['instanceUrl']}"
       post_image_to_response_url response_url, \
-                                 response['result']['instanceImageUrl']
+                                 response['result']['instanceUrl']
       status 200
     else
       string_as_json_response 'Error generating meme'
