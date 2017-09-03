@@ -94,9 +94,9 @@ get '/' do
 end
 
 get '/oauth' do
-  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=\
-#{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}\
-&code=#{params['code']}")
+  response = HTTParty.post("https://slack.com/api/oauth.access?client_id=" \
+    "#{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}" \
+    "&code=#{params['code']}")
   print(response)
   response_body = JSON.parse(response.body)
   if response_body['ok'] == true
